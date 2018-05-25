@@ -11,6 +11,11 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+import ssl
+from urllib.request import urlopen, Request
+from urllib.parse import urlencode, quote_plus, quote
+from urllib.error import HTTPError, URLError
+
 #from browsermobproxy import Server
 #from xlsxlib import Excel
 import time
@@ -22,8 +27,11 @@ from random import shuffle
 
 import csv
 import datetime
+import requests
 
 from env import _path_to_mozilla, email_address, password_text
+
+
 
 class Angelco():
 
@@ -59,6 +67,7 @@ class Angelco():
 
   def get(self, url):
     self.driver.get(url)
+    self.clever_print('Getting: '+str(url))
     self.medium_sleep()
     return
 
@@ -160,21 +169,28 @@ class Angelco():
     website=None
     job_data=None
 
-    #get
-    job_link = job.find_element_by_class_name("browse-table-row-pic").find_element_by_css_selector('a').get_attribute('href')
-    picture = job.find_element_by_class_name("browse-table-row-pic").find_element_by_css_selector('a').find_element_by_css_selector('img').get_attribute('src')
-    link = job.find_element_by_class_name("startup-link").get_attribute('href')
-    name = job.find_element_by_class_name("startup-link").text
-    tagline = job.find_element_by_class_name("tagline").text
-    title = job.find_element_by_class_name("collapsed-title").text
-    compensation = job.find_element_by_class_name("collapsed-compensation").text
+    soup = BeautifulSoup(self.driver.page_source, "html.parser")
+
+    job_link = soup.select_one('a.startup-link')['href']
+    picture = soup.select_one('div.browse-table-row-pic.js-browse-table-row-pic').select_one('img')['src']
+    link = soup.select_one('a.startup-link')['href']
+    name = soup.select_one('a.startup-link').text.strip()
+    compensation = soup.select_one('div.collapsed-compensation').text.strip()
     compensation_detailed = self.handle_compensation(compensation)
-    tags = job.find_element_by_class_name("collapsed-tags").text
-    location = job.find_element_by_class_name("locations").text
-    employees = job.find_element_by_class_name("employees").text
-    website = job.find_element_by_class_name("website-link").get_attribute('href')
+    tags = soup.select_one('div.collapsed-tags').text.strip()
+
+    title = soup.select_one('div.collapsed-title').text.strip()
+    tagline = soup.select_one('div.tagline').text.strip()
+    location = soup.select_one('div.locations').text.strip()
+    employees = soup.select_one('div.employees').text.strip().replace(' employees', '')
+    website = soup.select_one('a.website-link')['href']
 
     return {'job_link':job_link, 'picture':picture, 'link':link, 'name':name, 'tagline':tagline, 'title':title, 'compensation':compensation, 'compensation_detailed':compensation_detailed, 'tags':tags, 'location':location, 'employees':employees, 'website':website}
+
+  def get_extra(self, url):
+    self.get(url)
+
+    return
 
   def search_scrape(self):
     try:
@@ -195,7 +211,7 @@ class Angelco():
           # self.driver.execute_script("arguments[0].scrollIntoView();", job)
           # Get infos
           job_data = self.search_scrape_job(job)
-          self.clever_print(job_data)
+          self.clever_print('Getting '+job_data['name']+' job data...')
           self.print_json(job_data)
           job_list.append(job_data)
         except Exception as e:
@@ -233,7 +249,8 @@ def main():
   company_list = angel.search_scrape()
 
   print(json.dumps(company_list, indent=4))
-  # angel.print_csv()
+
+  # get_extra('https://angel.co/gomore/jobs')
   return
 
 if __name__ == "__main__":
