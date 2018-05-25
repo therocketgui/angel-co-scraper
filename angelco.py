@@ -29,13 +29,16 @@ import csv
 import datetime
 import requests
 
+import traceback
+
+
 from env import _path_to_mozilla, email_address, password_text
 
 
 
 class Angelco():
 
-  def __init__(self):
+  def __init__(self, keywords):
 
     options = Options()
     options.add_argument("--headless")
@@ -44,7 +47,13 @@ class Angelco():
     self.driver.implicitly_wait(10)
     self.clever_print("Firefox Headless Browser Invoked")
 
+    self.search_uri_str = handle_uri(keywords)
+
     return
+
+  def handle_uri(keywords):
+    uri = 'https://angel.co/jobs#find/f!%7B%22roles%22%3A%5B%22Growth%20Hacker%22%5D%2C%22locations%22%3A%5B%221653-Los%20Angeles%2C%20CA%22%5D%7D'
+    return uri
 
   def clever_print(self, message):
     # Print and Log
@@ -131,7 +140,7 @@ class Angelco():
 
   def search_uri(self):
     # Before figuring out the search url structure
-    self.get('https://angel.co/jobs#find/f!%7B%22roles%22%3A%5B%22Marketing%22%5D%2C%22types%22%3A%5B%22internship%22%5D%2C%22locations%22%3A%5B%221842-Paris%2C%20FR%22%5D%7D')
+    self.get(self.search_uri_str)
     return
 
   def handle_compensation(self, compensation):
@@ -169,7 +178,7 @@ class Angelco():
     website=None
     job_data=None
 
-    soup = BeautifulSoup(self.driver.page_source, "html.parser")
+    soup = BeautifulSoup(job.get_attribute('outerHTML'), "html.parser")
 
     job_link = soup.select_one('a.startup-link')['href']
     picture = soup.select_one('div.browse-table-row-pic.js-browse-table-row-pic').select_one('img')['src']
@@ -187,10 +196,58 @@ class Angelco():
 
     return {'job_link':job_link, 'picture':picture, 'link':link, 'name':name, 'tagline':tagline, 'title':title, 'compensation':compensation, 'compensation_detailed':compensation_detailed, 'tags':tags, 'location':location, 'employees':employees, 'website':website}
 
-  def get_extra(self, url):
+  def get_page_data(self, url):
     self.get(url)
+    soup = BeautifulSoup(self.driver.page_source, "html.parser")
 
-    return
+    try:
+      company_description = {'description': soup.select_one('div.js-preamble').text}
+    except:
+      company_description = {'description': None}
+
+    # Handle fundings format
+    try:
+      fundings_string = soup.find_all("div",{"class":"vital s-vgBottom1 tiptip"})[1].text.strip()
+      # print(fundings_string)
+      date = fundings_string.split('in ')[1].split('.')[0].strip()
+      _type = fundings_string.strip().split()[0][0]
+      amount_string = fundings_string.split(' ')[0]
+      if 'M' in amount_string:
+        amount = int(amount_string.replace('M', '').replace(_type, '')) * 1000000
+      elif 'K' in amount_string:
+        amount = int(amount_string.replace('K', '').replace(_type, '')) * 1000
+
+      series = fundings_string.split(' ', 1)[1].split(' in')[0]
+
+      fundings = {'date': date,'type': series,'amount': amount,'currency': _type}
+    except:
+      fundings = {'date': None,'type': None,'amount': None,'currency': None}
+
+    socials = {'twitter': None}
+    try:
+      socials = {'twitter':soup.select_one('a.twitter-link')['href']}
+    except:
+      pass
+
+    tags = []
+
+    # Test all the divs as it may appear in different positions
+    try:
+      for sub_div in soup.find_all("div", {"class": "vital s-vgBottom1"}):
+        if sub_div.find("div", {"class": "fontello-tag"}) is not None:
+          for tag in sub_div.find_all('a'):
+            tags.append(tag.text)
+    except Exception as e:
+      print(e)
+
+    return {**company_description, **{'fundings': fundings}, **{'socials': socials}, **{'tags': tags}}
+
+  def get_extra(self, data):
+    for job in data:
+      self.clever_print('Getting Extra for: '+job['name'])
+      job['extra'] = self.get_page_data(job['link'])
+      self.short_sleep()
+    return data
 
   def search_scrape(self):
     try:
@@ -212,19 +269,24 @@ class Angelco():
           # Get infos
           job_data = self.search_scrape_job(job)
           self.clever_print('Getting '+job_data['name']+' job data...')
+
           self.print_json(job_data)
           job_list.append(job_data)
         except Exception as e:
           self.clever_print(e)
           pass
 
+      # Get extra data optional
+      job_list_extra = self.get_extra(job_list)
+
     except Exception as e:
       self.clever_print(e)
       self.clever_print('Quitting due to issue...')
+      traceback.print_exc()
     finally:
       self.quit()
 
-    return job_list
+    return job_list_extra
 
   def get_json(self):
     with open('jobs.json') as data_file:
@@ -241,17 +303,14 @@ class Angelco():
       json.dump(data, f, indent=4)
     return
 
-def main():
-  angel = Angelco()
-
+def get_jobs(keywords):
+  angel = Angelco(keywords)
   angel.login()
-
   company_list = angel.search_scrape()
 
   print(json.dumps(company_list, indent=4))
-
-  # get_extra('https://angel.co/gomore/jobs')
   return
 
 if __name__ == "__main__":
-  main()
+  get_jobs(["Growth Manager", "San Fransisco"])
+
