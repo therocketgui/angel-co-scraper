@@ -1,6 +1,7 @@
 
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 import selenium.webdriver.support.ui as ui
 from selenium.webdriver.common.keys import Keys
@@ -22,198 +23,218 @@ from random import shuffle
 import csv
 import datetime
 
+from env import _path_to_mozilla, email_address, password_text
 
 class Angelco():
 
-	def __init__(self):
-		# Launch PhantomJS or Chromium
-		self.driver = webdriver.Chrome(os.environ['PATH_TO_CHROMIUM'])
-		#self.driver = webdriver.PhantomJS("/Users/guillaumedesa/Documents/phantomjs/bin/phantomjs")
-		self.driver.implicitly_wait(10)
-		
-		time.sleep(1)
+  def __init__(self):
 
-		return
+    options = Options()
+    options.add_argument("--headless")
+    self.driver = webdriver.Firefox(firefox_options=options, executable_path=_path_to_mozilla)
+    # self.driver = webdriver.Firefox(executable_path=_path_to_mozilla)
+    self.driver.implicitly_wait(10)
+    self.clever_print("Firefox Headless Browser Invoked")
 
-	def quit(self):
-		print('Quit Driver')
-		self.driver.quit()
-		self.short_sleep()
-		return  
+    return
 
-	def get(self, url):
-		self.driver.get(url)
-		self.medium_sleep()
-		return
+  def clever_print(self, message):
+    # Print and Log
+    print(self.curtime()+"~ "+str(message))
+    # self.log+= self.curtime()+"~ "+str(message)
+    return
 
-	def very_short_sleep(self):
-		# Random short sleep time
-		r = random.uniform(0.08, 0.13)
-		time.sleep(r)
-		return
+  def curtime(self):
+    return '[' + time.strftime("%d/%m/%Y")+ ' - ' + time.strftime("%H:%M:%S") + '] '
 
-	def short_sleep(self):
-		# Random short sleep time
-		r = random.uniform(0.6, 1.2)
-		time.sleep(r)
-		return
+  def start(self):
 
-	def medium_sleep(self):
-		# Random medium sleep time
-		r = random.uniform(1.6, 2.2)
-		time.sleep(r)
-		return
+    return
 
-	def large_sleep(self):
-		# Random medium sleep time
-		r = random.uniform(3, 6)
-		time.sleep(r)
-		return
+  def quit(self):
+    print('Quit Driver')
+    self.driver.quit()
+    self.short_sleep()
+    return
 
-	def scroll_bottom(self):
-		# Scroll to bottom of a page
-		print('Scrolling...')
-		for scroll in range(0,15):
-			self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-			self.short_sleep()
+  def get(self, url):
+    self.driver.get(url)
+    self.medium_sleep()
+    return
 
-		self.medium_sleep()
-		self.driver.execute_script("window.scrollTo(0, -document.body.scrollHeight);")
-		return
+  def very_short_sleep(self):
+    # Random short sleep time
+    r = random.uniform(0.08, 0.13)
+    time.sleep(r)
+    return
 
-	def login(self):
-		self.get('https://angel.co/login')
+  def short_sleep(self):
+    # Random short sleep time
+    r = random.uniform(0.6, 1.2)
+    time.sleep(r)
+    return
 
-		div_login = self.driver.find_element_by_class_name("standard_login")
-		email = div_login.find_element_by_name("user[email]")
-		password = div_login.find_element_by_name("user[password]")
+  def medium_sleep(self):
+    # Random medium sleep time
+    r = random.uniform(1.6, 2.2)
+    time.sleep(r)
+    return
 
-		email_address = os.environ['ANGEL_LOGIN_ID']
-		for character in email_address:
-			email.send_keys(character)
-			self.very_short_sleep()
-		self.medium_sleep()
+  def large_sleep(self):
+    # Random medium sleep time
+    r = random.uniform(3, 6)
+    time.sleep(r)
+    return
 
-		password_text = os.environ['ANGEL_LOGIN_PWD']
-		for character in password_text:
-			password.send_keys(character)
-			self.very_short_sleep()
-		self.medium_sleep()  
+  def scroll_bottom(self):
+    # Scroll to bottom of a page
+    self.clever_print('Revealing all jobs...')
+    for scroll in range(0,1):
+      self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+      self.short_sleep()
 
-		div_login.find_element_by_class_name("c-button").click()  
-		self.large_sleep()
-		return
+    self.medium_sleep()
+    self.driver.execute_script("window.scrollTo(0, -document.body.scrollHeight);")
+    return
 
-	def search_uri(self):
-		# Before figuring out the search url structure
-		self.get('https://angel.co/jobs#find/f!%7B%22roles%22%3A%5B%22Marketing%22%5D%2C%22types%22%3A%5B%22internship%22%5D%2C%22locations%22%3A%5B%221842-Paris%2C%20FR%22%5D%7D')
-		return
+  def login(self):
+    self.clever_print('Login Start...')
+    self.get('https://angel.co/login')
 
-	def handle_compensation(self, compensation):
-		char_list = list(compensation)
-		if char_list[10] == 'k':
-			# Retrieve prices and shares (if <£100K)
-			price_low = char_list[1]+char_list[2]
-			price_high = char_list[8]+char_list[9]
-			#share_low = char_list[14]+char_list[15]+char_list[16]
-			#share_high = char_list[20]+char_list[21]+char_list[22]
-		else:
-			# Retrieve prices and shares (if >=£100K)
-			price_low = char_list[1]+char_list[2]+char_list[3]
-			price_high = char_list[9]+char_list[10]+char_list[11]
-			#share_low = char_list[16]+char_list[17]+char_list[18]
-			#share_high = char_list[22]+char_list[23]+char_list[24]
-		compensation_detailed = {'price_low':price_low, 'price_high':price_high}
-		return compensation_detailed
+    div_login = self.driver.find_element_by_class_name("standard_login")
+    email = div_login.find_element_by_name('user[email]')
+    password = div_login.find_element_by_name('user[password]')
 
-	def search_scrape_job(self, job):
-		#init
-		job_link=None
-		picture=None
-		link=None
-		name=None
-		tagline=None
-		title=None
-		compensation=None
-		compensation_detailed=None
-		tags=None
-		location=None
-		employees=None
-		website=None
-		job_data=None
+    for character in email_address:
+      email.send_keys(character)
+      self.very_short_sleep()
+    self.medium_sleep()
 
-		#get
-		job_link = job.find_element_by_class_name("browse-table-row-pic").find_element_by_css_selector('a').get_attribute('href')
-		picture = job.find_element_by_class_name("browse-table-row-pic").find_element_by_css_selector('a').find_element_by_css_selector('img').get_attribute('src')
-		link = job.find_element_by_class_name("startup-link").get_attribute('href')
-		name = job.find_element_by_class_name("startup-link").text
-		tagline = job.find_element_by_class_name("tagline").text
-		title = job.find_element_by_class_name("collapsed-title").text
-		compensation = job.find_element_by_class_name("collapsed-compensation").text
-		compensation_detailed = self.handle_compensation(compensation)
-		tags = job.find_element_by_class_name("collapsed-tags").text
-		location = job.find_element_by_class_name("locations").text
-		employees = job.find_element_by_class_name("employees").text
-		website = job.find_element_by_class_name("website-link").get_attribute('href')
-		job_data = {'job_link':job_link, 'picture':picture, 'link':link, 'name':name, 'tagline':tagline, 'title':title, 'compensation':compensation, 'compensation_detailed':compensation_detailed, 'tags':tags, 'location':location, 'employees':employees, 'website':website}
- 
-		return job_data
+    for character in password_text:
+      password.send_keys(character)
+      self.very_short_sleep()
+    self.medium_sleep()
 
-	def search_scrape(self):
-		# Main Scraper Function
-		job_list=[]
-		self.search_uri()
-		self.scroll_bottom()
-		self.large_sleep()
-		container = self.driver.find_element_by_class_name("startup-container")
-		jobs = container.find_elements_by_class_name("job_listings")
-		for job in jobs:
-			try:
-				self.driver.execute_script("arguments[0].scrollIntoView();", job)
-				job_data = self.search_scrape_job(job)
-				print(job_data)
-				print('\n')
-				self.print_json(job_data)
-				job_list.append(job_data)
-			except Exception as e:
-				print(e)
-				pass
-		self.quit()
-		return job_list
+    div_login.find_element_by_class_name("c-button").click()
+    self.large_sleep()
+    self.clever_print('Login Successfull...')
+    return
 
-	def get_json(self):
-		with open('jobs.json') as data_file: 
-			data = json.load(data_file)
-		return data
+  def search_uri(self):
+    # Before figuring out the search url structure
+    self.get('https://angel.co/jobs#find/f!%7B%22roles%22%3A%5B%22Marketing%22%5D%2C%22types%22%3A%5B%22internship%22%5D%2C%22locations%22%3A%5B%221842-Paris%2C%20FR%22%5D%7D')
+    return
 
-	def print_json(self,job):
+  def handle_compensation(self, compensation):
 
-		# retrieive the data stored and the local_id list
-		data = self.get_json()
-		data['jobs'].append(job)
-		# write and store the data in the json
-		with open('jobs.json', 'w') as f:
-			json.dump(data, f, indent=4)
-		return
+    if 'No Salary' in compensation:
+      _type = {'currency': None}
+      _compensation = {'price_low': None, 'price_high': None}
+    else:
+      _type = {'currency': compensation.strip().split()[0][0]}
+      prices = compensation.split(' – ')
+      price_low = int(prices[0].replace(_type['currency'], '').replace('K', '000'))
+      price_high = int(prices[1].split(' · ')[0].replace(_type['currency'], '').replace('K', '000'))
+      _compensation = {'price_low':price_low, 'price_high':price_high}
 
-	def print_csv(self):
-		now = datetime.datetime.now()
-		date = str(now.day) + "-" + str(now.month) + "-" + str(now.year)
-		filename='jobs-'+date+'.csv'
+    if 'No Equity' in compensation:
+      _equity = {'equity': False}
+    else:
+      _equity = {'equity': True}
 
-		jobs = self.get_json()
+    return {**_type, **_compensation, **_equity}
 
-		with open(filename, 'w') as csvfile:
-			filewriter = csv.writer(csvfile, delimiter=',', quoting=csv.QUOTE_MINIMAL)
-			filewriter.writerow(['picture', 'name', 'link', 'tagline', 'title', 'salary_min','salary_max', 'tags','location','employees','website'])
+  def search_scrape_job(self, job):
+    #init
+    job_link=None
+    picture=None
+    link=None
+    name=None
+    tagline=None
+    title=None
+    compensation=None
+    compensation_detailed=None
+    tags=None
+    location=None
+    employees=None
+    website=None
+    job_data=None
 
-			for job in jobs['jobs']:
-				filewriter.writerow([job['picture'], job['name'], job['link'], job['tagline'], job['title'], str(job['compensation_detailed']['price_low']), str(job['compensation_detailed']['price_high']), job['tags'], job['location'], job['employees'],job['website'],])
+    #get
+    job_link = job.find_element_by_class_name("browse-table-row-pic").find_element_by_css_selector('a').get_attribute('href')
+    picture = job.find_element_by_class_name("browse-table-row-pic").find_element_by_css_selector('a').find_element_by_css_selector('img').get_attribute('src')
+    link = job.find_element_by_class_name("startup-link").get_attribute('href')
+    name = job.find_element_by_class_name("startup-link").text
+    tagline = job.find_element_by_class_name("tagline").text
+    title = job.find_element_by_class_name("collapsed-title").text
+    compensation = job.find_element_by_class_name("collapsed-compensation").text
+    compensation_detailed = self.handle_compensation(compensation)
+    tags = job.find_element_by_class_name("collapsed-tags").text
+    location = job.find_element_by_class_name("locations").text
+    employees = job.find_element_by_class_name("employees").text
+    website = job.find_element_by_class_name("website-link").get_attribute('href')
 
-		return
+    return {'job_link':job_link, 'picture':picture, 'link':link, 'name':name, 'tagline':tagline, 'title':title, 'compensation':compensation, 'compensation_detailed':compensation_detailed, 'tags':tags, 'location':location, 'employees':employees, 'website':website}
+
+  def search_scrape(self):
+    try:
+      # Main Scraper Function
+      self.clever_print('Starting Scraping...')
+      job_list=[]
+
+      self.search_uri()
+      self.scroll_bottom()
+      self.large_sleep()
+
+      # bs4
+      container = self.driver.find_element_by_class_name("startup-container")
+      jobs = container.find_elements_by_class_name("job_listings")
+      # iterate on each job
+      for job in jobs:
+        try:
+          # self.driver.execute_script("arguments[0].scrollIntoView();", job)
+          # Get infos
+          job_data = self.search_scrape_job(job)
+          self.clever_print(job_data)
+          self.print_json(job_data)
+          job_list.append(job_data)
+        except Exception as e:
+          self.clever_print(e)
+          pass
+
+    except Exception as e:
+      self.clever_print(e)
+      self.clever_print('Quitting due to issue...')
+    finally:
+      self.quit()
+
+    return job_list
+
+  def get_json(self):
+    with open('jobs.json') as data_file:
+      data = json.load(data_file)
+    return data
+
+  def print_json(self,job):
+
+    # retrieive the data stored and the local_id list
+    data = self.get_json()
+    data['jobs'].append(job)
+    # write and store the data in the json
+    with open('jobs.json', 'w') as f:
+      json.dump(data, f, indent=4)
+    return
+
+def main():
+  angel = Angelco()
+
+  angel.login()
+
+  company_list = angel.search_scrape()
+
+  print(json.dumps(company_list, indent=4))
+  # angel.print_csv()
+  return
 
 if __name__ == "__main__":
-	angel = Angelco()
-	angel.login()
-	company_list = angel.search_scrape()
-	angel.print_csv()
+  main()
