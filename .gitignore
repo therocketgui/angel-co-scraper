@@ -3,3 +3,4 @@ ghostdriver.log
 csv
 __pycache__
 env.py
+jobs.json
