@@ -1044,6 +1044,405 @@
             "location": "Paris, Philadelphia, Boston, Washington DC, Houston, Dallas, San Francisco",
             "employees": "51-200",
             "website": "http://dayuse.com"
+        },
+        {
+            "job_link": "https://angel.co/scratch-financial/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/4736932-508b11c2d4b6473eee6980d361cf0eb6-thumb_jpg.jpg?buster=1516210140",
+            "link": "https://angel.co/scratch-financial/jobs",
+            "name": "Scratch Financial",
+            "tagline": "Smart and simple payment solutions for pet families.",
+            "title": "Marketing & Graphic Design Associate",
+            "compensation": "$60K \u2013 $70K \u00b7 0.01% \u2013 0.025%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 60000,
+                "price_high": 70000,
+                "equity": true
+            },
+            "tags": "Full Time \u00b7 Los Angeles \u00b7 UI/UX Designer \u00b7 Marketing \u00b7 Growth Hacker \u00b7 Graphic Design \u00b7 Product Marketing \u00b7 Marketing Strategy \u00b7 Social Media Marketing \u00b7 Sales and Marketing \u00b7 Digital Marketing",
+            "location": "Earth, Santa Monica",
+            "employees": "11-50",
+            "website": "http://www.scratchpay.com"
+        },
+        {
+            "job_link": "https://angel.co/mobalytics/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/1089190-90fe7b1b4f2e75a780df9574b9cc5c04-thumb_jpg.jpg?buster=1460291568",
+            "link": "https://angel.co/mobalytics/jobs",
+            "name": "Mobalytics",
+            "tagline": "Analytics for gamers",
+            "title": "Head of Marketing",
+            "compensation": "$80K \u2013 $120K \u00b7 0.1% \u2013 0.5%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 80000,
+                "price_high": 120000,
+                "equity": true
+            },
+            "tags": "Full Time \u00b7 Remote OK",
+            "location": "Earth, Santa Monica",
+            "employees": "11-50",
+            "website": "http://mobalyticshq.com"
+        },
+        {
+            "job_link": "https://angel.co/luckydayapp/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/419930-ac8868c55ac17183d542654b01ee07ea-thumb_jpg.jpg?buster=1455659077",
+            "link": "https://angel.co/luckydayapp/jobs",
+            "name": "Lucky Day",
+            "tagline": "Win money & prizes with your free daily lotto and scratch cards!",
+            "title": "User Acquisition Manager",
+            "compensation": "$70K \u2013 $120K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 70000,
+                "price_high": 120000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles",
+            "employees": "1-10",
+            "website": "http://luckydayapp.com"
+        },
+        {
+            "job_link": "https://angel.co/win-kel/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/1573103-0316be3a0b2df9a462ca63c3610f9b51-thumb_jpg.jpg?buster=1516987160",
+            "link": "https://angel.co/win-kel/jobs",
+            "name": "Win-Kel",
+            "tagline": "Space sharing for storage",
+            "title": "Social Media Intern",
+            "compensation": "No Salary \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": null,
+                "price_low": null,
+                "price_high": null,
+                "equity": false
+            },
+            "tags": "Internship \u00b7 Remote OK",
+            "location": "Seattle, San Francisco, Los Angeles, Boston, Cambridge, Bloomington, San Jose, San Francisco Bay Area, San Diego, Sacramento, Albany",
+            "employees": "employees",
+            "website": "https://www.win-kel.com/"
+        },
+        {
+            "job_link": "https://angel.co/femmeboss/jobs",
+            "picture": "https://angel.co/images/shared/nopic_startup.png",
+            "link": "https://angel.co/femmeboss/jobs",
+            "name": "Femmeboss",
+            "tagline": "Tinder for professional women",
+            "title": "Membership Sales & Marketing Intern",
+            "compensation": "$30K \u2013 $50K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 30000,
+                "price_high": 50000,
+                "equity": false
+            },
+            "tags": "Internship",
+            "location": "Los Angeles",
+            "employees": "1-10",
+            "website": "http://sologirlsquad.com"
+        },
+        {
+            "job_link": "https://angel.co/match-com/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/33919-eb25eafca9f5f85787e813555eca47c3-thumb_jpg.jpg?buster=1513901293",
+            "link": "https://angel.co/match-com/jobs",
+            "name": "Match.com",
+            "tagline": "",
+            "title": "Growth Marketer (Growth Hacker)",
+            "compensation": "$80K \u2013 $150K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 80000,
+                "price_high": 150000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles, San Francisco, New York City",
+            "employees": "",
+            "website": "http://www.lifeatmatch.com"
+        },
+        {
+            "job_link": "https://angel.co/rype/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/2896192-5247ab64958a0f2a45922133a8a1d762-thumb_jpg.jpg?buster=1492684162",
+            "link": "https://angel.co/rype/jobs",
+            "name": "Rype",
+            "tagline": "Quality language lessons for busy people",
+            "title": "Growth (Paid/SEO)",
+            "compensation": "$40K \u2013 $70K \u00b7 0.1% \u2013 0.5%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 40000,
+                "price_high": 70000,
+                "equity": true
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles, New York City",
+            "employees": "1-10",
+            "website": "https://www.rypeapp.com"
+        },
+        {
+            "job_link": "https://angel.co/forkable/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/251699-1b3c254e4b62dda6da97518fdad262a1-thumb_jpg.jpg?buster=1448319402",
+            "link": "https://angel.co/forkable/jobs",
+            "name": "Forkable",
+            "tagline": "The best way to get lunch at the\u00a0office",
+            "title": "General Manager - Los Angeles",
+            "compensation": "$40K \u2013 $80K \u00b7 0.0% \u2013 2.0%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 40000,
+                "price_high": 80000,
+                "equity": true
+            },
+            "tags": "Full Time \u00b7 Remote OK",
+            "location": "San Francisco, New York City, Los Angeles, Boston, Chicago, Seattle, Denver, Washington DC, San Diego, Philadelphia, Tokyo, Seoul, London, Paris, Osaka, Shanghai, Berlin, Istanbul, Mexico City, S\u00e3o Paulo, Moscow, Hong Kong, Taipei, Beijing, Toronto, Tel Aviv-Yafo, Silicon Valley, Palo Alto, Santa Clara, San Francisco Bay Area",
+            "employees": "11-50",
+            "website": "http://forkable.com"
+        },
+        {
+            "job_link": "https://angel.co/dogtown-media/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/121933-5a30b18cef65fa972eec529fcbfb9164-thumb_jpg.jpg?buster=1420835228",
+            "link": "https://angel.co/dogtown-media/jobs",
+            "name": "Dogtown Media",
+            "tagline": "Mobile Solutions to Meaningful Connections",
+            "title": "Business Development",
+            "compensation": "$60K \u2013 $75K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 60000,
+                "price_high": 75000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Venice Beach, Los Angeles, Santa Monica, Marina del Rey, Montevideo",
+            "employees": "11-50",
+            "website": "http://www.dogtownmedia.com"
+        },
+        {
+            "job_link": "https://angel.co/summit-series/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/43221-b6d411738449b5faace782a411189ca9-thumb_jpg.jpg?buster=1453319408",
+            "link": "https://angel.co/summit-series/jobs",
+            "name": "Summit",
+            "tagline": "",
+            "title": "Head of Speaker Acquisition",
+            "compensation": "$80K \u2013 $150K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 80000,
+                "price_high": 150000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles, San Francisco, New York City",
+            "employees": "employees",
+            "website": ""
+        },
+        {
+            "job_link": "https://angel.co/scratch-financial/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/4736932-508b11c2d4b6473eee6980d361cf0eb6-thumb_jpg.jpg?buster=1516210140",
+            "link": "https://angel.co/scratch-financial/jobs",
+            "name": "Scratch Financial",
+            "tagline": "Smart and simple payment solutions for pet families.",
+            "title": "Marketing & Graphic Design Associate",
+            "compensation": "$60K \u2013 $70K \u00b7 0.01% \u2013 0.025%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 60000,
+                "price_high": 70000,
+                "equity": true
+            },
+            "tags": "Full Time \u00b7 Los Angeles \u00b7 UI/UX Designer \u00b7 Marketing \u00b7 Growth Hacker \u00b7 Graphic Design \u00b7 Product Marketing \u00b7 Marketing Strategy \u00b7 Social Media Marketing \u00b7 Sales and Marketing \u00b7 Digital Marketing",
+            "location": "Venice Beach, Los Angeles, Santa Monica, Marina del Rey, Montevideo",
+            "employees": "11-50",
+            "website": "http://www.scratchpay.com"
+        },
+        {
+            "job_link": "https://angel.co/dogtown-media/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/121933-5a30b18cef65fa972eec529fcbfb9164-thumb_jpg.jpg?buster=1420835228",
+            "link": "https://angel.co/dogtown-media/jobs",
+            "name": "Dogtown Media",
+            "tagline": "Mobile Solutions to Meaningful Connections",
+            "title": "Business Development",
+            "compensation": "$60K \u2013 $75K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 60000,
+                "price_high": 75000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Venice Beach, Los Angeles, Santa Monica, Marina del Rey, Montevideo",
+            "employees": "11-50",
+            "website": "http://www.dogtownmedia.com"
+        },
+        {
+            "job_link": "https://angel.co/luckydayapp/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/419930-ac8868c55ac17183d542654b01ee07ea-thumb_jpg.jpg?buster=1455659077",
+            "link": "https://angel.co/luckydayapp/jobs",
+            "name": "Lucky Day",
+            "tagline": "Win money & prizes with your free daily lotto and scratch cards!",
+            "title": "User Acquisition Manager",
+            "compensation": "$70K \u2013 $120K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 70000,
+                "price_high": 120000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles",
+            "employees": "1-10",
+            "website": "http://luckydayapp.com"
+        },
+        {
+            "job_link": "https://angel.co/cvstms/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/5460497-677712af62234622b3fab65f9eb2090e-thumb_jpg.jpg?buster=1521169837",
+            "link": "https://angel.co/cvstms/jobs",
+            "name": "CVSTMS",
+            "tagline": "Custom apparel for art loving people",
+            "title": "Social Media Intern",
+            "compensation": "$K \u2013 $12K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 0,
+                "price_high": 12000,
+                "equity": false
+            },
+            "tags": "Internship \u00b7 Remote OK",
+            "location": "Remote, Toronto, Los Angeles",
+            "employees": "",
+            "website": "http://cvstms.com"
+        },
+        {
+            "job_link": "https://angel.co/kitsplit/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/622857-4705171078363de538ee047871fe76d3-thumb_jpg.jpg?buster=1465484823",
+            "link": "https://angel.co/kitsplit/jobs",
+            "name": "KitSplit",
+            "tagline": "Re-envisioning the Hollywood production studio as a local marketplace.",
+            "title": "LA General Manager",
+            "compensation": "$90K \u2013 $120K \u00b7 0.0% \u2013 0.5%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 90000,
+                "price_high": 120000,
+                "equity": true
+            },
+            "tags": "Full Time",
+            "location": "New York City, Brooklyn, Los Angeles",
+            "employees": "11-50",
+            "website": "http://www.kitsplit.com"
+        },
+        {
+            "job_link": "https://angel.co/brunch-media/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/3725993-824f3cd04d5e24f219e50365c4efd758-thumb_jpg.jpg?buster=1488384653",
+            "link": "https://angel.co/brunch-media/jobs",
+            "name": "Brunch Media",
+            "tagline": "Never Consumed Alone",
+            "title": "Audience Development Manager",
+            "compensation": "No Salary \u00b7 1.0% \u2013 5.0%\n\u00b7",
+            "compensation_detailed": {
+                "currency": null,
+                "price_low": null,
+                "price_high": null,
+                "equity": true
+            },
+            "tags": "Cofounder",
+            "location": "San Francisco, New York City, Los Angeles",
+            "employees": "",
+            "website": "http://brunchmedia.com"
+        },
+        {
+            "job_link": "https://angel.co/pay2play/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/4372233-e985483f9368b17eaa3d92901bd4c580-thumb_jpg.jpg?buster=1519948840",
+            "link": "https://angel.co/pay2play/jobs",
+            "name": "Pay2Play",
+            "tagline": "Smart Wager Settlement Through Ethereum Blockchain",
+            "title": "Growth Hacker Intern",
+            "compensation": "No Salary \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": null,
+                "price_low": null,
+                "price_high": null,
+                "equity": false
+            },
+            "tags": "Internship \u00b7 Remote OK",
+            "location": "Venice Beach, Remote",
+            "employees": "1-10",
+            "website": "http://pay2play.io"
+        },
+        {
+            "job_link": "https://angel.co/codesmith/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/642848-65eea9a4e5699f0b74ab44d434c94d2c-thumb_jpg.jpg?buster=1438472045",
+            "link": "https://angel.co/codesmith/jobs",
+            "name": "Codesmith",
+            "tagline": "Software Engineering Immersive teaching Computer Science and JavaScript",
+            "title": "Business Development and Outreach Manager",
+            "compensation": "$50K \u2013 $80K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 50000,
+                "price_high": 80000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles, New York City",
+            "employees": "11-50",
+            "website": "http://codesmith.io"
+        },
+        {
+            "job_link": "https://angel.co/femmeboss/jobs",
+            "picture": "https://angel.co/images/shared/nopic_startup.png",
+            "link": "https://angel.co/femmeboss/jobs",
+            "name": "Femmeboss",
+            "tagline": "Tinder for professional women",
+            "title": "Membership Sales & Marketing Intern",
+            "compensation": "$30K \u2013 $50K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 30000,
+                "price_high": 50000,
+                "equity": false
+            },
+            "tags": "Internship",
+            "location": "Los Angeles",
+            "employees": "1-10",
+            "website": "http://sologirlsquad.com"
+        },
+        {
+            "job_link": "https://angel.co/summit-series/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/43221-b6d411738449b5faace782a411189ca9-thumb_jpg.jpg?buster=1453319408",
+            "link": "https://angel.co/summit-series/jobs",
+            "name": "Summit",
+            "tagline": "",
+            "title": "Head of Speaker Acquisition",
+            "compensation": "$80K \u2013 $150K \u00b7 No Equity\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 80000,
+                "price_high": 150000,
+                "equity": false
+            },
+            "tags": "Full Time",
+            "location": "Los Angeles, San Francisco, New York City",
+            "employees": "employees",
+            "website": ""
+        },
+        {
+            "job_link": "https://angel.co/vyng/jobs",
+            "picture": "https://d1qb2nb5cznatu.cloudfront.net/startups/i/749577-71bb8a9b03f14d0e49abfd7c9efcbc29-thumb_jpg.jpg?buster=1435788658",
+            "link": "https://angel.co/vyng/jobs",
+            "name": "Vyng",
+            "tagline": "Helping the world start better conversations.",
+            "title": "Executive Assistant x Protege",
+            "compensation": "$40K \u2013 $50K \u00b7 0.0% \u2013 0.1%\n\u00b7",
+            "compensation_detailed": {
+                "currency": "$",
+                "price_low": 40000,
+                "price_high": 50000,
+                "equity": true
+            },
+            "tags": "Full Time",
+            "location": "Earth, Santa Monica, Los Angeles",
+            "employees": "11-50",
+            "website": "http://www.vyng.me"
         }
     ]
 }

@@ -33,7 +33,7 @@ import traceback
 
 
 from env import _path_to_mozilla, email_address, password_text
-
+from searx import Google
 
 
 class Angelco():
@@ -47,11 +47,11 @@ class Angelco():
     self.driver.implicitly_wait(10)
     self.clever_print("Firefox Headless Browser Invoked")
 
-    self.search_uri_str = handle_uri(keywords)
+    self.search_uri_str = self.handle_uri(keywords)
 
     return
 
-  def handle_uri(keywords):
+  def handle_uri(self, keywords):
     uri = 'https://angel.co/jobs#find/f!%7B%22roles%22%3A%5B%22Growth%20Hacker%22%5D%2C%22locations%22%3A%5B%221653-Los%20Angeles%2C%20CA%22%5D%7D'
     return uri
 
@@ -249,6 +249,21 @@ class Angelco():
       self.short_sleep()
     return data
 
+  def get_people(self, data):
+    for job in data:
+      _peoples = []
+
+      people = Google(job['website'])
+      peoples = people.run()
+
+      for p in peoples:
+        if p['company'].lower()[:6] == job['name'].lower()[:6]:
+          _peoples.append(p)
+
+      job['peoples'] = _peoples
+
+    return data
+
   def search_scrape(self):
     try:
       # Main Scraper Function
@@ -278,6 +293,8 @@ class Angelco():
 
       # Get extra data optional
       job_list_extra = self.get_extra(job_list)
+      # Get people from the company
+      job_list_people = self.get_people(job_list_extra)
 
     except Exception as e:
       self.clever_print(e)
